@@ -21,7 +21,7 @@ var userSchema = new mongoose.Schema ({
 var users = mongoose.model("users" , userSchema);
 
 app.get("/" , (req,res) => {
-	res.render('index');
+	res.render('new');
 });
 
 app.post("/done" , (req , res) =>{
@@ -50,7 +50,7 @@ app.post("/done" , (req , res) =>{
 
 
 
-app.listen(8080 , () =>{
+app.listen(8082 , () =>{
 	console.log("started");
 })
 
