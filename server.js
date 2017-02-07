@@ -3,7 +3,7 @@ var express = require("express"),
 	bodyParser = require("body-parser"),
 	mongoose	= require("mongoose");
 	ejs          = require("ejs");
-
+mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/attendance");
 var app = express();
 
@@ -16,7 +16,8 @@ var userSchema = new mongoose.Schema ({
 	name:String,
 	teamName:String,
 	inTime:String,
-	outTime:String
+	outTime:String,
+	topic: String
 });
 var users = mongoose.model("users" , userSchema);
 
@@ -24,28 +25,24 @@ app.get("/" , (req,res) => {
 	res.render('new');
 });
 
-app.post("/done" , (req , res) =>{
-	var name = req.body.name,
-	    teamName = req.body.teamName,
-		inTime = req.body.inTime,
-		outTime = req.body.outTime;
+app.post("/" , (req , res) =>{
+	 var Users = new users({
+		 name : req.body.name,
+	 	    teamName : req.body.teamName,
+	 		inTime : new Date(),
+	 		outTime : req.body.outTime,
+	 		topic : req.body.topic
+	 })
+	 Users.save().then((doc)=>{
+		 console.log(doc)
+		 res.send("<script>alert('Your attendance is marked')</script>");
+	 },(err)=>{
+		 console.log("Error: ",err);
+	 })
 
-	var user = {
-				name:name , 
-				teamName:teamName ,
-				inTime:inTime ,
-				outTime:outTime  }
 
 
-	console.log(user);
-	users.create(user , (err,newUser) => {
-		if(err){
-			console.log(err);
-		}
-		res.send("Done")
 
-	})
-	
 })
 
 
@@ -53,5 +50,3 @@ app.post("/done" , (req , res) =>{
 app.listen(8082 , () =>{
 	console.log("started");
 })
-
-
