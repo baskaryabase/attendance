@@ -24,7 +24,6 @@ var users = mongoose.model("users" , userSchema);
 app.get("/" , (req,res) => {
 	res.render('new');
 });
-
 app.post("/" , (req , res) =>{
 	 var Users = new users({
 		 name : req.body.name,
