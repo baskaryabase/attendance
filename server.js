@@ -38,10 +38,6 @@ app.post("/" , (req , res) =>{
 	 },(err)=>{
 		 console.log("Error: ",err);
 	 })
-
-
-
-
 })
 
 
