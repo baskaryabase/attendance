@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guru2402/Attendance.git"
+    "url": "git+https://github.com/smilysyndrella/Attendance.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/guru2402/Attendance/issues"
+    "url": "https://github.com/smilysyndrella/Attendance/issues"
   },
-  "homepage": "https://github.com/guru2402/Attendance#readme",
+  "homepage": "https://github.com/smilysyndrella/Attendance#readme",
   "dependencies": {
     "body-parser": "^1.16.0",
     "ejs": "^2.5.5",
